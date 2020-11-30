@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import bb from '../API/BB'
+
+import '../Styles/styles.css'
+import Header from './Header'
 import SearchBar from './SearchBar'
 import CharacterList from './CharacterList'
 
@@ -18,18 +21,11 @@ const App = () => {
     fetchData()
   }, [search])
 
-  if(isLoading){
-    return(
-      <>
-      Loading...
-      </>
-    )
-  }
-
   return(
     <div className="container">
+      <Header />
       <SearchBar searchChar={(query) => setSearch(query)}/>
-      <CharacterList characters = { characters }/>
+      <CharacterList characters = { characters } isLoading = { isLoading }/>
     </div>
   )
 }
